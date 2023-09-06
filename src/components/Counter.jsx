@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {
-    ChevronUp,
-    ChevronsUp,
-    RotateCcw,
-    Hash,
-    ChevronDown,
-    ChevronsDown,
+  ChevronUp,
+  ChevronsUp,
+  RotateCcw,
+  Hash,
+  ChevronDown,
+  ChevronsDown,
 } from 'react-feather';
+import './Counter.css';
 
 const Counter = () => {
   const [count, setCount] = useState(0);
@@ -36,79 +37,39 @@ const Counter = () => {
     setCount(count - 1);
   };
 
-  // Update the document title with the latest count
   useEffect(() => {
     document.title = `Count: ${count}`;
   }, [count]);
-    const mainStyle = {
-        backgroundColor: '#BAA8C5',
-        display: 'flex',
-        justifyContent: 'center',
-        minHeight: '100vh',
-    }
-  
-    const counterStyle = {
-        display: 'flex',
-        backgroundColor: '#FFFFFF',
-        borderRadius: '5px',
-        boxShadow: '0px 0px 0px rgba(0, 0, 0, 0.5)',
-        padding: '8px',
-        margin: '120px',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '50vh',
-        width: '80%',
-        maxWidth: '400px',
-    }
-     const countStyle = {
-    fontSize: '50px',   
-    marginTop: '30px',
-    display: 'flex',
-    paddingBottom: '10px',
-    justifyContent: 'center',
-    fontWeight: 'bold',    
-    color: 'blue',         
-  };
-
-    const buttonStyle = {
-    borderRadius: '5px',
-    backgroundColor: '##808080',
-    color: '#000',
-    padding: '8px 15px',
-    margin: '3px',
-    cursor: 'pointer',
-  };
 
   return (
-    <main style={mainStyle}>
-      <div style={counterStyle}>
-      <div>
-        <h1>Current Value:</h1>
-      <span style={countStyle}>{count}</span>
+    <main className="main-container">
+      <div className="counter-container">
+        <div>
+          <h1>Current Value:</h1>
+          <span className="count-value">{count}</span>
+        </div>
+        <div>
+          <button onClick={handleIncrementOne} className="button-style">
+            <ChevronUp />
+          </button>
+          <button onClick={handleIncrementTen} className="button-style">
+            <ChevronsUp />
+          </button>
+          <button onClick={handleReset} className="button-style">
+            <RotateCcw />
+          </button>
+          <button onClick={handleRandomize} className="button-style">
+            <Hash />
+          </button>
+          <button onClick={handleDecrementTen} className="button-style">
+            <ChevronsDown />
+          </button>
+          <button onClick={handleDecrementOne} className="button-style">
+            <ChevronDown />
+          </button>
+        </div>
       </div>
-     <div>
-      <button onClick={handleIncrementOne} style={buttonStyle}>
-        <ChevronUp />
-      </button>
-      <button onClick={handleIncrementTen} style={buttonStyle}>
-        <ChevronsUp />
-      </button>
-      <button onClick={handleReset} style={buttonStyle}>
-        <RotateCcw />
-      </button>
-      <button onClick={handleRandomize} style={buttonStyle}>
-        <Hash />
-      </button>
-      <button onClick={handleDecrementTen} style={buttonStyle}>
-        <ChevronsDown />
-      </button>
-      <button onClick={handleDecrementOne} style={buttonStyle}>
-        <ChevronDown/>
-      </button>
-    </div>
-  </div>
-</main>
+    </main>
   );
 };
 
